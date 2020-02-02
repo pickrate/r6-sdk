@@ -1,0 +1,7 @@
+src
+.vscode
+tsconfig.json
+.prettierignore
+.eslintignore
+.eslintrc
+.travis.yml

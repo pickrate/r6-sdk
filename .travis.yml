@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+- node
+os: linux
+jobs:
+  include:
+  - stage: test
+    script: npm test
+  - stage: lint
+    script: npm run lint
+  - stage: release
+    if: type = push AND tag IS present
+    install: true
+    script: skip
+    deploy:
+      provider: npm
+      email: <npm-email>
+      api_key:
+        secure: <get-from-travis-encrypt>
+      on:
+        tags: true
+        repo: <username>/<project>
+        branch: master
+stages:
+- test
+- lint
+- release
