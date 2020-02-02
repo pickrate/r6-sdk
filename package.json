@@ -1,7 +1,7 @@
 {
-  "name": "package-name",
+  "name": "@rainbow6/api",
   "version": "0.0.0",
-  "description": "<tagline>",
+  "description": "Typescript SDK for the Rainbow 6 API",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json --passWithNoTests",
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<username>/<project>.git"
+    "url": "git+https://github.com/elviswolcott/r6-api.git"
   },
   "keywords": [],
   "author": "<name>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/<username>/<project>.git"
+    "url": "https://github.com/elviswolcott/r6-api.git"
   },
-  "homepage": "https://github.com/<username>/<project>#readme",
+  "homepage": "https://github.com/elviswolcott/r6-api#readme",
   "devDependencies": {
     "@types/jest": "^24.9.0",
     "@typescript-eslint/eslint-plugin": "^2.16.0",

@@ -1,6 +1,8 @@
-# <package-name>
+[![Travis (.com)](https://img.shields.io/travis/com/elviswolcott/r6-api?logo=travis)](https://travis-ci.com/elviswolcott/r6-api)
+[![npm](https://img.shields.io/npm/v/@rainbow6/api?label=@rainbow6/api&logo=npm)](https://www.npmjs.com/package/@rainbow6/api)
+# r6-api
 
-> tagline
+> Typescript SDK for the Rainbow 6 API
 
 ## Available Scripts
 
@@ -24,12 +26,4 @@ Checks code for style issues and syntax errors with TSLint and Prettier, attempt
 
 ## Publishing a new version
 
-Travis is configured to run
-
-## Initial Setup
-
-1. Edit `README.md` so the badges point to your repository
-1. Edit `.travis.yml` so the repository and npm credentials match your project
-    * Encrypting your NPM token requires the Travis CLI
-1. Edit `package.json` so that the package name, author, and repository match your project
-1. Disable `build config validation` in the Travis CI settings for the repository
+Travis is configured to run deploys on tags.
