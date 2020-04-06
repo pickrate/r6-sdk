@@ -1,6 +1,7 @@
 src
 .vscode
 tsconfig.json
+jestconfig.json
 .prettierignore
 .eslintignore
 .eslintrc
