@@ -32,14 +32,14 @@ class Endpoint<Q> {
    */
   query(queryObj: Q): this {
     // TODO: probably needs to be URI encoded
-    const contructed = Object.entries(queryObj)
+    const constructed = Object.entries(queryObj)
       .map(
         ([param, value]) =>
           `${param}=${Array.isArray(value) ? value.join(",") : value}`
       )
       .join("&");
-    if (contructed.length > 0) {
-      this.queryString = `?${contructed}`;
+    if (constructed.length > 0) {
+      this.queryString = `?${constructed}`;
     }
     return this;
   }
