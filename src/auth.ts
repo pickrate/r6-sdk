@@ -1,4 +1,5 @@
 import fetch, { Headers, Request } from "node-fetch";
+import { login } from "./api";
 
 const sleep = async (ms: number): Promise<void> =>
   new Promise((resolve) => {
@@ -151,14 +152,11 @@ class AuthorizationProvider {
       return;
     }
     // hit API to receive a token that is actually useful (ticket)
-    const request = new Request(
-      "https://public-ubiservices.ubi.com/v3/profiles/sessions",
-      {
-        method: "POST",
-        headers: new Headers(this.headers(token)),
-        body: JSON.stringify({ rememberMe: true }),
-      }
-    );
+    const request = new Request(login.url(), {
+      method: "POST",
+      headers: new Headers(this.headers(token)),
+      body: JSON.stringify({ rememberMe: true }),
+    });
     const res = await fetch(request);
     switch (res.status) {
       // success
