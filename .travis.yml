@@ -11,7 +11,8 @@ jobs:
   - stage: release
     if: type = push AND tag IS present
     install: true
-    script: skip
+    script: npm build
+    skip_cleanup: true
     deploy:
       provider: npm
       email: elviswolcott+r6npm@gmail.com
