@@ -1,28 +1,22 @@
 import { AuthorizationProvider, CredentialSet } from "./auth";
 import {
-  login,
-  stats,
-  stats2,
-  search,
-  progression,
-  Platform,
-  SearchPlatform,
   Mode,
+  SearchPlatform,
   Region,
   Statistic,
-  SearchQuery,
-  StatsQuery,
-  Stats2Query,
-  ProgressionQuery,
-  SearchAPIResponse,
-  ProgressionAPIResponse,
-  StatsAPIResponse,
   allStats,
-  Stats2APIResponse,
-} from "./api";
+} from "./api/parameters";
+import { Platform } from "./api/endpoint";
+import {
+  ProgressionQuery,
+  ProgressionAPIResponse,
+  progression,
+} from "./api/progression";
+import { RankQuery, RankAPIResponse, rank } from "./api/rank";
+import { SearchQuery, SearchAPIResponse, search } from "./api/search";
+import { StatsQuery, StatsAPIResponse, stats } from "./api/stats";
 import fetch, { Request } from "node-fetch";
-import { Endpoint, PlatformEndpoint } from "./endpoint";
-import { listenerCount } from "cluster";
+import { Endpoint, PlatformEndpoint } from "./api/endpoint";
 
 interface PlayerProfile {
   platformId: string;
@@ -185,8 +179,8 @@ class Siege {
    *
    * @param endpoint - endpoint to GET
    */
-  private async get<R>(
-    endpoint: Endpoint<any> | PlatformEndpoint<any>
+  private async get<Q, R>(
+    endpoint: Endpoint<Q> | PlatformEndpoint<Q>
   ): Promise<R | APIError> {
     const request = this.auth.authorize(
       new Request(endpoint.url(), { method: "GET" })
@@ -205,7 +199,7 @@ class Siege {
     query: string,
     platform: SearchPlatform
   ): Promise<PlayerProfile[] | null> {
-    const response = await this.get<SearchAPIResponse>(
+    const response = await this.get<SearchQuery, SearchAPIResponse>(
       search.query({
         nameOnPlatform: query,
         platformType: platform,
@@ -282,7 +276,7 @@ class Siege {
     profiles: string[],
     platform: Platform
   ): Promise<{ [profileId: string]: ProfileProgression } | null> {
-    const response = await this.get<ProgressionAPIResponse>(
+    const response = await this.get<ProgressionQuery, ProgressionAPIResponse>(
       progression.setPlatform(platform).query({
         // eslint-disable-next-line @typescript-eslint/camelcase
         profile_ids: profiles,
@@ -357,8 +351,8 @@ class Siege {
     region: Region,
     season: number
   ): Promise<null | { [profileId: string]: ProfileRank }> {
-    const response = await this.get<StatsAPIResponse>(
-      stats.setPlatform(platform).query({
+    const response = await this.get<RankQuery, RankAPIResponse>(
+      rank.setPlatform(platform).query({
         // eslint-disable-next-line @typescript-eslint/camelcase
         profile_ids: profiles,
         // eslint-disable-next-line @typescript-eslint/camelcase
@@ -456,17 +450,15 @@ class Siege {
    *
    * @param profiles - profiles to get stats for
    * @param platform - platform to get stats on
-   * @param stats - stats to get
+   * @param statistics - stats to get
    */
   async getBulkStats(
     profiles: string[],
     platform: Platform,
-    stats: Statistic[]
+    statistics: Statistic[]
   ): Promise<null | { [profileId: string]: ProfileStats }> {
-    const response = await this.get<Stats2APIResponse>(
-      stats2
-        .setPlatform(platform)
-        .query({ populations: profiles, statistics: stats })
+    const response = await this.get<StatsQuery, StatsAPIResponse>(
+      stats.setPlatform(platform).query({ populations: profiles, statistics })
     );
     if ("results" in response) {
       return Object.entries(response.results).reduce(

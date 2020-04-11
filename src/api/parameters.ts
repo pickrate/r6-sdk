@@ -1,10 +1,14 @@
-import { Endpoint, PlatformEndpoint, Platform } from "./endpoint";
-
-type NoQuery = undefined;
-
 enum Mode {
   ranked = "pvp_ranked",
   casual = "pvp_casual",
+}
+
+enum SearchPlatform {
+  twitch = "twitch",
+  xbox = "xbl",
+  playstation = "psn",
+  pc = "uplay",
+  steam = "steam",
 }
 
 enum Region {
@@ -125,132 +129,4 @@ enum Statistic {
 
 const allStats = Object.values(Statistic);
 
-interface StatsQuery {
-  board_id: Mode;
-  profile_ids: string | string[];
-  region_id: Region;
-  season_id: number;
-}
-
-interface StatsAPIResponse {
-  players: {
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    [profile_id: string]: {
-      // this season
-      max_mmr: number;
-      max_rank: number;
-      top_rank_position: number;
-      // current state
-      mmr: number;
-      rank: number;
-      skill_stdev: number;
-      kills: number;
-      deaths: number;
-      wins: number;
-      losses: number;
-      abandons: number;
-      skill_mean: number;
-      //  update
-      last_match_mmr_change: number;
-      last_match_skill_stdev_change: number;
-      last_match_skill_mean_change: number;
-      update_time: string;
-      last_match_result: number; // TODO: figure out what these equate to
-      // constants
-      previous_rank_mmr: number;
-      next_rank_mmr: number;
-      // from query
-      profile_id: string;
-      region: Region;
-      season: number;
-      board_id: Mode;
-    };
-  };
-}
-
-interface ProgressionQuery {
-  profile_ids: string | string[];
-}
-
-interface PlayerProfile {
-  xp: number;
-  profile_id: string;
-  lootbox_probability: number;
-  level: number;
-}
-
-interface ProgressionAPIResponse {
-  player_profiles: PlayerProfile[];
-}
-
-interface Stats2Query {
-  populations: string | string[];
-  statistics: Statistic | Statistic[];
-}
-
-interface Stats2APIResponse {
-  results: {
-    [profileId: string]: {
-      // unfortunately the response has new fields added, so there's not much value typing it
-      [statSlug: string]: number;
-    };
-  };
-}
-
-enum SearchPlatform {
-  twitch = "twitch",
-  xbox = "xbl",
-  playstation = "psn",
-  pc = "uplay",
-  steam = "steam",
-}
-
-interface Profile {
-  profileId: string;
-  userId: string;
-  platformType: SearchPlatform;
-  idOnPlatform: string;
-  nameOnPlatform: string;
-}
-
-interface SearchAPIResponse {
-  profiles: Profile[];
-}
-
-interface SearchQuery {
-  nameOnPlatform: string;
-  platformType: SearchPlatform;
-}
-
-const login = new Endpoint<NoQuery>(3, "profiles/sessions");
-const stats = new PlatformEndpoint<StatsQuery>(1, "r6karma/players");
-const stats2 = new PlatformEndpoint<Stats2Query>(1, "playerstats2/statistics");
-const search = new Endpoint<SearchQuery>(2, "profiles");
-const progression = new PlatformEndpoint<ProgressionQuery>(
-  1,
-  "r6playerprofile/playerprofile/progressions"
-);
-
-export {
-  login,
-  stats,
-  stats2,
-  search,
-  progression,
-  Platform,
-  SearchPlatform,
-  Mode,
-  Region,
-  Statistic,
-  allStats,
-  SearchQuery,
-  StatsQuery,
-  Stats2Query,
-  ProgressionQuery,
-  SearchAPIResponse,
-  Profile,
-  ProgressionAPIResponse,
-  PlayerProfile,
-  StatsAPIResponse,
-  Stats2APIResponse,
-};
+export { Mode, SearchPlatform, Region, Statistic, allStats };

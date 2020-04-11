@@ -1,5 +1,5 @@
 import fetch, { Headers, Request } from "node-fetch";
-import { login } from "./api";
+import { login } from "./api/login";
 
 const sleep = async (ms: number): Promise<void> =>
   new Promise((resolve) => {
