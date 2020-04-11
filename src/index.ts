@@ -73,10 +73,6 @@ interface ProfileStats {
     | { stat: number };
 }
 
-interface SiegeProps {
-  credentials: CredentialSet[];
-}
-
 interface APIError {
   error: string;
 }
@@ -111,20 +107,6 @@ const statLookup: { weapons: lookup; operator: lookup; profile: lookup } = {
     bestscore: "highscore",
   },
 };
-
-/*
-// fastest according to JSPerf (by a factor of 5) 
-// https://web.archive.org/web/20170320150629/http://jsperf.com:80/count-the-number-of-characters-in-a-string
-const occurs = (string: string, character: string): number => {
-  let count = -1;
-  for (
-    let index = 0;
-    index != -1;
-    count++, index = string.indexOf(character, index + 1)
-  );
-  return count;
-};
-*/
 
 const patterns = {
   basic: /([a-z]+)_([a-z]+)():([A-F0-9]*:[A-F0-9]*):infinite/,
@@ -186,7 +168,7 @@ class Siege {
    *
    * @param options - options for the client instance
    */
-  constructor({ credentials }: SiegeProps) {
+  constructor(credentials: CredentialSet[]) {
     if (credentials.length === 0) {
       throw new Error("No authentication provided");
     }
