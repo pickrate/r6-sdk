@@ -164,9 +164,9 @@ const statPath = (
 class Siege {
   private auth: AuthorizationProvider;
   /**
-   * Creates an API client
+   * Creates an API client.
    *
-   * @param options - options for the client instance
+   * @param credentials - credentials for the client instance
    */
   constructor(credentials: CredentialSet[]) {
     if (credentials.length === 0) {
@@ -175,17 +175,17 @@ class Siege {
     this.auth = new AuthorizationProvider(credentials);
   }
   /**
-   * Performs initial setup (authentication)
+   * Performs initial setup (authentication).
    */
   async init(): Promise<void> {
     await this.auth.init();
   }
   /**
-   * Makes an authenticated API request
+   * Makes an authenticated API request.
    *
    * @param endpoint - endpoint to GET
    */
-  async get<R>(
+  private async get<R>(
     endpoint: Endpoint<any> | PlatformEndpoint<any>
   ): Promise<R | APIError> {
     const request = this.auth.authorize(
@@ -342,7 +342,7 @@ class Siege {
     }
   }
   /**
-   * Get player's rank in game.
+   * Get players' rank in game.
    *
    * @param profiles - profiles to get ranks for
    * @param platform - platform for stats
