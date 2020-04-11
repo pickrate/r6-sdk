@@ -12,9 +12,9 @@ jobs:
     if: type = push AND tag IS present
     install: true
     script: npm build
-    skip_cleanup: true
     deploy:
       provider: npm
+      skip_cleanup: true
       email: elviswolcott+r6npm@gmail.com
       api_key:
         secure: "VbTUXLyh3dkgBCHHa3Ouu3ua/mBEU5Fup/Ge8usJ37o5iHxjJG+OVj/kjPNQjP1C7SG8zoqQq62nraz8bUvgvJYVD00WGnZxbm31WbY9C7Y1P7PkyFcz/9AznD7YavzxMKJ7f8IyWI3+YpkUXBfLuS2aFXC54E/BDwrfY9QdKemHFe/+TjUeQa6TEwAzA3L5jeFMqu7DHU1JfrEBmO8zQTrZtKCS9O0CT/RNl6u43NDoPS50Gtfjr13+/xYAWrJ1bhQhuFPei2vWneNuxNw4ceLM44fuQzaqiuoK1aQErpvRG4dzDNlmcU9VXUGo6pa0ad455541utHoAIys5cXk5sXru8GG5aY1dJ3ieENhQSdH+BA+BXYH7u7Otws+J6TkPCK9FjK9BwZVEhb9PPv+VxpzYET0YixNYA5lMNMq20LL+xNp9FKoGF9cdVdVIrXQXEFPmdwR04VuqRoQu6WcoBKRGHJzLghlmSItTkIUSpDHTn6cxPJwpI7Vpd0oa8s7AXsfkVu/CK3hKiOUw82AjgTlu8xGh1bqjgKIeRV6XAcEhCEiicsOTLAc6GqagfVLZO6YxGNK84VmmRJ//0C92aUM+jlvgRfzx3mSUSITREn57gwOx6u4iYtGrnRcOj3d4zFEhdmd2N4o97f7J/RYDMrJODXnzTc6nHHsvIdAnsc="
