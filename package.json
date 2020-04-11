@@ -1,6 +1,9 @@
 {
   "name": "@rainbow6/api",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Typescript SDK for the Rainbow 6 API",
   "main": "lib/index.js",
   "scripts": {
