@@ -38,6 +38,7 @@ const {
   ]);
   await r6.init();
 
+  // if you ever see me in game, please don't spawn peek me
   const { profileId } = await r6.getPlayer("FledRose0", SearchPlatform.pc);
   console.log(profileId);
   const { xp } = await r6.getProgression(profileId, Platform.pc);
@@ -56,6 +57,7 @@ const {
     },
   } = await r6.getStats(profileId, Platform.pc, allStats);
   console.log(kills);
+  // don't spawn peek this guy either
   const { profileId: profileId2 } = await r6.getPlayer(
     "FledRoseO",
     SearchPlatform.pc
