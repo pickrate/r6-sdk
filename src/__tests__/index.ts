@@ -9,7 +9,7 @@ import {
 } from "../index";
 
 // ensures the API doesn't change accidentally
-describe.skip("Rainbow Six Siege SDK", () => {
+describe("Rainbow Six Siege SDK", () => {
   it("exports Siege", () => {
     expect(Siege).toBeTruthy();
   });
