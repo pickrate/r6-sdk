@@ -45,15 +45,15 @@ describe("Rainbow Six Siege SDK (live)", () => {
   });
   it("tracks ranked stats", async () => {
     // don't want tests to break if I don't play for a season
-    const { season } = (await r6.getRank(
+    const { wins } = (await r6.getRank(
       PROFILE_ID,
       Platform.pc,
       Mode.ranked,
       Region.na,
       -1
-    )) || { season: 0 };
+    )) || { wins: -1 };
     // this should only increase in the future
-    expect(season).toBeGreaterThanOrEqual(17);
+    expect(wins).toBeGreaterThanOrEqual(0);
   });
   it("tracks stats", async () => {
     const result = await r6.getStats(PROFILE_ID, Platform.pc, allStats);
