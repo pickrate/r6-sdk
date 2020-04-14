@@ -4,3 +4,5 @@ node_modules
 .vscode
 # generated code
 /lib
+# environment variables
+.env
