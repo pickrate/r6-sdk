@@ -59,12 +59,13 @@ interface ProfileRank {
   mode: Mode;
 }
 
+interface StatCategory {
+  [id: string]: { [stat: string]: number };
+}
 interface ProfileStats {
-  [category: string]:
-    | {
-        [id: string]: { stat: number };
-      }
-    | { stat: number };
+  operators?: StatCategory;
+  profile?: StatCategory;
+  weapons?: StatCategory;
 }
 
 interface APIError {
