@@ -7,7 +7,7 @@
   "description": "Typescript SDK for the Rainbow 6 API",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest --config jestconfig.json --passWithNoTests --verbose --silent false",
+    "test": "jest --config jestconfig.json --passWithNoTests --verbose --silent",
     "build": "tsc",
     "lint": "tsc --noEmit && eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix"
