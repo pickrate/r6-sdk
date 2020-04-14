@@ -495,4 +495,4 @@ class Siege {
 }
 // the main goal is to clean up the disgusting data that ubi provides
 
-export { Siege, SearchPlatform, Platform, Mode, Region, allStats };
+export { Siege, SearchPlatform, Platform, Mode, Region, Statistic, allStats };
