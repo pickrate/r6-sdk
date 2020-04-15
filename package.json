@@ -1,5 +1,5 @@
 {
-  "name": "@rainbow6/api",
+  "name": "@rainbow6/sdk",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elviswolcott/r6-api.git"
+    "url": "git+https://github.com/pickrate/r6-sdk.git"
   },
   "keywords": [],
   "author": "Elvis Wolcott",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elviswolcott/r6-api.git"
+    "url": "https://github.com/pickrate/r6-sdk.git"
   },
-  "homepage": "https://github.com/elviswolcott/r6-api#readme",
+  "homepage": "https://github.com/pickrate/r6-sdk#readme",
   "devDependencies": {
     "@types/jest": "^25.1.0",
     "@types/node": "^13.11.0",

@@ -1,5 +1,5 @@
-[![Travis (.com)](https://travis-ci.com/elviswolcott/r6-api.svg?token=YgB8n2pFukyGcmwgZh7W&branch=master)](https://travis-ci.com/elviswolcott/r6-api)
-[![npm](https://img.shields.io/npm/v/@rainbow6/api?label=@rainbow6/api&logo=npm)](https://www.npmjs.com/package/@rainbow6/api)
+[![Travis (.com)](https://travis-ci.com/pickrate/r6-sdk.svg?token=YgB8n2pFukyGcmwgZh7W&branch=master)](https://travis-ci.com/pickrate/r6-sdk)
+[![npm](https://img.shields.io/npm/v/@rainbow6/sdk?label=@rainbow6/sdk&logo=npm)](https://www.npmjs.com/package/@rainbow6/sdk)
 
 # `@rainbow6/api`
 
@@ -14,7 +14,7 @@ It is recommended to create a new account for using the API.
 ## Installation
 
 ```bash
-npm install @rainbow6/api
+npm install @rainbow6/sdk
 ```
 
 ## Example
@@ -27,7 +27,7 @@ const {
   Mode,
   Region,
   allStats,
-} = require("@rainbow6/api");
+} = require("@rainbow6/sdk");
 
 (async () => {
   const r6 = new Siege([
