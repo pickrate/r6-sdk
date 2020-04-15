@@ -1,7 +1,7 @@
 [![Travis (.com)](https://travis-ci.com/pickrate/r6-sdk.svg?token=YgB8n2pFukyGcmwgZh7W&branch=master)](https://travis-ci.com/pickrate/r6-sdk)
 [![npm](https://img.shields.io/npm/v/@rainbow6/sdk?label=@rainbow6/sdk&logo=npm)](https://www.npmjs.com/package/@rainbow6/sdk)
 
-# `@rainbow6/api`
+# `@rainbow6/sdk`
 
 > Typescript SDK for the Rainbow 6 API
 
